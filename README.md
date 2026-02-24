@@ -91,7 +91,7 @@ JSON
 ## Resetting the Database
 
 If you want to clear all data and start fresh while testing the API, you can wipe the database and re-run the migrations using this Artisan command:
-\`\`\`bash
+\`\`\`
 php artisan migrate:fresh
 \`\`\`
 *Note: This will delete all users, wallets, and transactions.*

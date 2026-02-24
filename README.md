@@ -40,7 +40,7 @@ php artisan migrate
 php artisan serve
 The API will be available at http://127.0.0.1:8000.
 
-API Documentation
+## API Documentation
 
 
 Note: Add Accept: application/json and Content-Type: application/json to your headers when testing these endpoints.

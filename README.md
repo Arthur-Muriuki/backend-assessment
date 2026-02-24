@@ -41,6 +41,8 @@ php artisan serve
 The API will be available at http://127.0.0.1:8000.
 
 API Documentation
+
+
 Note: Add Accept: application/json and Content-Type: application/json to your headers when testing these endpoints.
 
 1. Create a User
@@ -53,6 +55,7 @@ JSON
     "email": "arthurmuriuki@example.com",
     "password": "password123"
 }
+
 2. View User Profile & Total Balance
 Endpoint: GET /api/users/{id}
 Returns the user, all associated wallets, transaction history for those wallets, and the total calculated balance.
@@ -84,3 +87,11 @@ JSON
     "amount": 50.00,
     "description": "Groceries"
 }
+
+## Resetting the Database
+
+If you want to clear all data and start fresh while testing the API, you can wipe the database and re-run the migrations using this Artisan command:
+\`\`\`bash
+php artisan migrate:fresh
+\`\`\`
+*Note: This will delete all users, wallets, and transactions.*

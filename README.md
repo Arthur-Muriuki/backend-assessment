@@ -67,6 +67,7 @@ JSON
     "name": "Main Checking Account",
     "balance": 500.00 
 }
+
 4. View a Single Wallet
 Endpoint: GET /api/wallets/{id}
 Returns the wallet details, current balance, and a list of all its transactions.

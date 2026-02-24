@@ -9,20 +9,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    protected $fillable = ['name', 'email', 'password']; // Default is fine
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+}
     /**
      * The attributes that should be hidden for serialization.
      *

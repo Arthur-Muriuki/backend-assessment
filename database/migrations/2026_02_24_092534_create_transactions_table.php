@@ -10,15 +10,17 @@ return new class extends Migration
      * Run the migrations.
      */
 public function up(): void
-{
-    Schema::create('transactions', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('wallet_id')->constrained()->onDelete('cascade');
-        $table->enum('type', ['income', 'expense']);
-        $table->decimal('amount', 10, 2); // 10 digits total, 2 after the decimal
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            // This links the transaction to a specific wallet
+            $table->foreignId('wallet_id')->constrained()->onDelete('cascade'); 
+            $table->enum('type', ['income', 'expense']);
+            $table->decimal('amount', 15, 2);
+            $table->string('description')->nullable();
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

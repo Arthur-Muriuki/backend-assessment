@@ -6,27 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wallet extends Model
 {
-    protected $fillable = ['user_id', 'name'];
+    // The attributes that are mass assignable
+    protected $fillable = [
+        'user_id',
+        'name',
+        'balance',
+    ];
 
-    // This automatically adds "balance" to the JSON response
-    protected $appends = ['balance']; 
-
+    /**
+     * Get the user that owns the wallet.
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get the transactions for the wallet.
+     */
     public function transactions()
     {
         return $this->hasMany(Transaction::class);
-    }
-
-    // Calculate: Total Income - Total Expense
-    public function getBalanceAttribute()
-    {
-        $income = $this->transactions()->where('type', 'income')->sum('amount');
-        $expense = $this->transactions()->where('type', 'expense')->sum('amount');
-        
-        return $income - $expense;
     }
 }

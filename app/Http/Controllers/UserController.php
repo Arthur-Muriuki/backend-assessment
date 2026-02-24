@@ -12,13 +12,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Basic validation
-        $validated = $request->validate([
+        // 1. Validate the incoming request
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:8',
         ]);
 
-        $user = User::create($validated);
+        // 2. Create the user (remember to hash the password!)
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+        ]);
 
+        // 3. Return a success response
         return response()->json([
             'message' => 'User created successfully',
             'user' => $user
@@ -30,18 +38,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // Load the user's wallets. 
-        // Note: The 'balance' is automatically appended to each wallet 
-        // because of the getBalanceAttribute() we added in the Wallet model!
-        $wallets = $user->wallets;
-
-        // Calculate the overall balance across all wallets
-        $totalBalance = $wallets->sum('balance');
+        // Eager load the wallets and their transactions to include balances
+        $user->load('wallets.transactions');
 
         return response()->json([
             'user' => $user,
-            'total_balance' => $totalBalance,
-            'wallets' => $wallets
+            // We can also calculate total balance across all wallets if desired
+            'total_balance' => $user->wallets->sum('balance')
         ]);
     }
 }

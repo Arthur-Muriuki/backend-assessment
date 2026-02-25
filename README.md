@@ -89,7 +89,7 @@ JSON
     "balance": 500.00 
 }
 
-4. View a Single Wallet
+5. View a Single Wallet
 
    
 Endpoint: GET /api/wallets/{id}

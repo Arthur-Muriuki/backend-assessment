@@ -56,6 +56,8 @@ JSON
 
 
 // Request Body
+
+
 {
     "name": "Arthur Muriuki",
     "email": "arthurmuriuki@example.com",
@@ -69,6 +71,7 @@ Endpoint: GET /api/users/{id}
 
 
 Returns the user, all associated wallets, transaction history for those wallets, and the total calculated balance.
+
 
 4. Create a Wallet
 
@@ -94,6 +97,7 @@ Endpoint: GET /api/wallets/{id}
 
 Returns the wallet details, current balance, and a list of all its transactions.
 
+
 6. Add a Transaction
 
    
@@ -102,13 +106,19 @@ Endpoint: POST /api/transactions
 
 Automatically updates the associated wallet's balance.
 
+
 JSON
 
 
 // Request Body
+
+
+//Must be "income" or "expense" 
+
+
 {
     "wallet_id": 1,
-    "type": "expense", <!-- Must be "income" or "expense" -->
+    "type": "expense", 
     "amount": 50.00,
     "description": "Groceries"
 }
@@ -116,7 +126,9 @@ JSON
 ## Resetting the Database
 
 If you want to clear all data and start fresh while testing the API, you can wipe the database and re-run the migrations using this Artisan command:
+
 \`\`\`
 php artisan migrate:fresh
 \`\`\`
+
 *Note: This will delete all users, wallets, and transactions.*

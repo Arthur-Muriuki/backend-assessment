@@ -43,12 +43,18 @@ The API will be available at http://127.0.0.1:8000.
 ## API Documentation
 
 
-Note: Add Accept: application/json and Content-Type: application/json to your headers when testing these endpoints.
+Note: Add Accept: application/json and Content-Type: 
+
+application/json to your headers when testing these endpoints.
 
 1. Create a User
+
+   
 Endpoint: POST /api/users
 
 JSON
+
+
 // Request Body
 {
     "name": "Arthur Muriuki",
@@ -57,13 +63,22 @@ JSON
 }
 
 2. View User Profile & Total Balance
+
+   
 Endpoint: GET /api/users/{id}
+
+
 Returns the user, all associated wallets, transaction history for those wallets, and the total calculated balance.
 
-3. Create a Wallet
+4. Create a Wallet
+
+   
 Endpoint: POST /api/wallets
 
+
 JSON
+
+
 // Request Body
 {
     "user_id": 1,
@@ -72,18 +87,28 @@ JSON
 }
 
 4. View a Single Wallet
+
+   
 Endpoint: GET /api/wallets/{id}
+
+
 Returns the wallet details, current balance, and a list of all its transactions.
 
-5. Add a Transaction
+6. Add a Transaction
+
+   
 Endpoint: POST /api/transactions
+
+
 Automatically updates the associated wallet's balance.
 
 JSON
+
+
 // Request Body
 {
     "wallet_id": 1,
-    "type": "expense", // Must be "income" or "expense"
+    "type": "expense", <!-- Must be "income" or "expense" -->
     "amount": 50.00,
     "description": "Groceries"
 }

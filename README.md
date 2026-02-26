@@ -28,15 +28,17 @@ composer install
 
 3. Set up the environment file:
 cp .env.example .env
+
+
 Note: Open the .env file and configure your database credentials (e.g., DB_CONNECTION, DB_DATABASE).
 
-4. Generate the application key:
+5. Generate the application key:
 php artisan key:generate
 
-5. Run the database migrations:
+6. Run the database migrations:
 php artisan migrate
 
-6. Start the local development server:
+7. Start the local development server:
 php artisan serve
 The API will be available at http://127.0.0.1:8000.
 

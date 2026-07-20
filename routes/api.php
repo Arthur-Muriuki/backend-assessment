@@ -12,7 +12,7 @@ Route::get('/users/{user}', [UserController::class, 'show']); // View Profile (W
 // route for the profile endpoint
 Route::get('/users/{user}', [UserController::class, 'show']);
 
-// Wallet Routes
+// Wallet Routes:
 Route::post('/wallets', [WalletController::class, 'store']); // Create Wallet
 Route::get('/wallets/{wallet}', [WalletController::class, 'show']); // View Single Wallet & Transactions
 
